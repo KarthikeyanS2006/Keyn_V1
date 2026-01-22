@@ -46,7 +46,6 @@ const ImageGenerator: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [enhancing, setEnhancing] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
-  const [currentOriginalUrl, setCurrentOriginalUrl] = useState<string | null>(null);
   const [enhancedPrompt, setEnhancedPrompt] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
@@ -128,7 +127,6 @@ const ImageGenerator: React.FC = () => {
     setError(null);
     setWarning(null);
     setGeneratedImage(null);
-    setCurrentOriginalUrl(null);
     
     if (!isPromptEnhanced) {
         setEnhancedPrompt(null); 
@@ -143,7 +141,6 @@ const ImageGenerator: React.FC = () => {
 
       if (result.imageUrl) {
         setGeneratedImage(result.imageUrl);
-        setCurrentOriginalUrl(result.originalUrl);
 
         const finalPrompt = result.textResponse || currentPrompt;
 
@@ -199,7 +196,6 @@ const ImageGenerator: React.FC = () => {
 
   const restoreFromHistory = (item: HistoryItem) => {
     setGeneratedImage(item.url);
-    setCurrentOriginalUrl(item.url);
     setPrompt(item.prompt);
     setEnhancedPrompt(item.enhancedPrompt);
     setAspectRatio(item.aspectRatio);

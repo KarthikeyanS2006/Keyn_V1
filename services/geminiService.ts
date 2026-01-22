@@ -1,5 +1,7 @@
 import { AspectRatio, GenerationResult, ImageStyle } from '../types';
 
+declare var process: any;
+
 // Custom Error class for handling service-specific issues
 export class ServiceError extends Error {
   code: string;
